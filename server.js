@@ -6,6 +6,7 @@ const routes = require('./controllers/burgers_controllers');
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
+app.use(express.static('public'));
 app.use(routes);
 
 app.listen(PORT, () => {
