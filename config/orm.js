@@ -9,6 +9,16 @@ orm = {
             };
             callback(results);
         });
+    },
+    insert: function (burgerName, table, callback) {
+        const test = { name: burgerName, devoured: false };
+        const queryStr = `INSERT INTO ${table} SET ?`
+        connection.query(queryStr, test, function (err, results) {
+            if (err) {
+                throw err;
+            };
+            callback(results);
+        });
     }
 };
 
