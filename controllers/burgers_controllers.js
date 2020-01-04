@@ -3,16 +3,25 @@ const router = express.Router();
 const burger = require('../models/burger');
 
 
-router.route('/')
+router.route('/burgers')
     .get(function (req, res) {
         burger.all(function (data) {
             console.log(data);
+            return res.json(data);
+        })
+    })
+
+router.route('/*')
+    .get(function (req, res) {
+        burger.all(function (data) {
             return res.render('index');
         })
     })
     .post(function (req, res) {
-        console.log(req.body)
-        return res.send(req.body);
+        const burgerName = req.body.name
+        burger.insert(burgerName, function (data) {
+            return res.send(req.body);
+        })
     })
 
 module.exports = router;
