@@ -6,6 +6,11 @@ var burger = {
             callback(res);
         });
     },
+    allWhere: function (callback) {
+        orm.selectAllWhere('burgers', 'devoured', 0, function (res) {
+            callback(res);
+        });
+    },
     insert: function (burgerName, callback) {
         orm.insert(burgerName, 'burgers', function (res) {
             callback(res);
