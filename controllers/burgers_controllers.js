@@ -1,26 +1,32 @@
+const burger = require('../models/burger');
 const express = require('express');
 const router = express.Router();
-const burger = require('../models/burger');
 
 
-router.route('/api/burgers')
-    .get(function (req, res) {
-        burger.all(function (data) {
-            return res.json(data);
-        })
-    })
+router.get('/api/burgers', (req, res) => {
+    burger.all((data) => {
+        return res.json(data);
+    });
+});
 
-router.route('/*')
-    .get(function (req, res) {
-        burger.allWhere(function (data) {
-            return res.render('index', { data });
-        })
+router.get('/', (req, res) => {
+    burger.all((data) => {
+        return res.render('index', { data });
     })
-    .post(function (req, res) {
-        const burgerName = req.body.name
-        burger.insert(burgerName, function (data) {
-            return res.send(req.body);
-        })
-    })
+});
+
+router.post('/api/burger/create', (req, res) => {
+    const burgerName = req.body.name
+    burger.insert(burgerName, (data) => {
+        return res.send({ redirect: '/' });
+    });
+});
+
+router.put('/api/burger/devour', (req, res) => {
+    const burgerId = req.body.id;
+    burger.devour(burgerId, () => {
+        return res.send({ redirect: '/' });
+    });
+});
 
 module.exports = router;
