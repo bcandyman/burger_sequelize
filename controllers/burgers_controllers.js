@@ -3,7 +3,7 @@ const router = express.Router();
 const burger = require('../models/burger');
 
 
-router.route('/burgers')
+router.route('/api/burgers')
     .get(function (req, res) {
         burger.all(function (data) {
             console.log(data);
@@ -14,7 +14,7 @@ router.route('/burgers')
 router.route('/*')
     .get(function (req, res) {
         burger.all(function (data) {
-            return res.render('index');
+            return res.render('index', { data });
         })
     })
     .post(function (req, res) {
