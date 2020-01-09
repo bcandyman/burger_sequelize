@@ -4,21 +4,30 @@
     <div class="row">
         <div class="col-4">
             {{#each data}}
+            {{#unless devoured}}
             <div class="burger-item">
                 <p>Item ID:{{id}}</p>
                 <p>Burger Name:</p>
                 <p>{{name}}</p>
-                <button id="devourBurger" type="button" class="btn btn-primary  w-100" data-burger-id={{id}}>Devour!</button>
+                <button type="button" class="btn btn-primary  w-100 devour" data-burger-id={{id}}>Devour!</button>
             </div>
+            {{/unless}}
             {{/each}}
         </div>
         <div class="col-4">
             <input id="burgerName" class="form-control" type="text" placeholder="Default input">
-            <button type="button" class="btn btn-primary mx-0 px-0 col-6 border-0">Clear</button>
-            <button id="addBurger" type="button" class="btn btn-primary mx-0 px-0 col-6 border-0">Add</button>
+            <button id="addBurger" type="submit" class="btn btn-primary mx-0 px-0 col-6 border-0">Add</button>
         </div>
         <div class="col-4">
-
+            {{#each data}}
+            {{#if devoured}}
+            <div class="burger-item">
+                <p>Item ID:{{id}}</p>
+                <p>Burger Name:</p>
+                <p>{{name}}</p>
+            </div>
+            {{/if}}
+            {{/each}}
         </div>
     </div>
 </div>
