@@ -11,11 +11,16 @@ var burger = {
             callback(res);
         });
     },
+    devour: function (burgerId, callback) {
+        orm.update('burgers', 'devoured', 'id', burgerId, 1, function (res) {
+            callback(res);
+        });
+    },
     insert: function (burgerName, callback) {
         orm.insert(burgerName, 'burgers', function (res) {
             callback(res);
         });
-    }
+    },
 };
 
 module.exports = burger;
