@@ -11,7 +11,22 @@ router.get('/api/burgers', (req, res) => {
 
 router.get('/', (req, res) => {
     burger.all((data) => {
+
+        const devouredData = data.filter((item) => {
+            return item.devoured !== 0;
+        })
+
+        const undevouredData = data.filter((item) => {
+            return item.devoured === 0;
+        })
+
+        const dataFilterByDevoured = {
+            devoured: devouredData,
+            undevouredData: undevouredData
+        };
+
         return res.render('index', { data });
+
     })
 });
 
