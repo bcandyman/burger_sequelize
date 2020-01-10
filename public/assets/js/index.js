@@ -13,7 +13,7 @@ $('#addBurger').click(() => {
     });
 })
 
-$("button.devour").click(() => {
+$("button.devour").click(function () {
     const burgerId = $(this).attr('data-burger-id');
     $.ajax({
         url: '/api/burger/devour',
