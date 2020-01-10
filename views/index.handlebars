@@ -1,28 +1,31 @@
-<h1>Burgers!</h1>
-
 <div class="container">
     <div class="row">
-        <div class="col-4">
+        <div class="col-6 offset-4">
+            <div class="form-inline">
+                <input id="burgerName" class="form-control" type="text" placeholder="Burger Name">
+                <button id="addBurger" type="submit" class="btn btn-success rounded-circle fa-2x fas fa-plus-circle"></button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-6">
             {{#each data}}
             {{#unless devoured}}
-            <div class="burger-item">
-                <p>Item ID:{{id}}</p>
+            <div class="burger-item p-2">
                 <p>Burger Name:</p>
                 <p>{{name}}</p>
-                <button type="button" class="btn btn-primary  w-100 devour" data-burger-id={{id}}>Devour!</button>
+                <button type="button" class="btn btn-success rounded-circle px-5 py-0 mx-auto  devour" data-burger-id={{id}}>Devour!</button>
             </div>
             {{/unless}}
             {{/each}}
         </div>
-        <div class="col-4">
-            <input id="burgerName" class="form-control" type="text" placeholder="Default input">
-            <button id="addBurger" type="submit" class="btn btn-primary mx-0 px-0 col-6 border-0">Add</button>
-        </div>
-        <div class="col-4">
+        <div class="col-6">
             {{#each data}}
             {{#if devoured}}
-            <div class="burger-item">
-                <p>Item ID:{{id}}</p>
+            <div class="burger-item p-2">
                 <p>Burger Name:</p>
                 <p>{{name}}</p>
             </div>
