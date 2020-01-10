@@ -1,8 +1,32 @@
+#addBurger{
+    margin-left: 10px;
+}
+
 .burger-item{
-    background-color:#E0E4CC;
-    border: #F38630 solid 1px;
+    background-color: black;
+    border: red solid 1px;
+    border-radius: 5px;
+    color: cornsilk;
+    height: 130px;
+    margin-top: 20px;
+    opacity: .8;
+}
+
+.devour{
+    font-family: 'Yellowtail', cursive;
+    font-size: 30px;
 }
 
 body{
-    background-color: #A7DBD8;
+    background-attachment: fixed;
+    background-image: url('../images/burger.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+header{
+    color: red;
+    font-family: 'Yellowtail', cursive;
+    font-size: 120px;
+    text-align: center;
 }
