@@ -3,18 +3,25 @@
 }
 
 .burger-item{
-    background-color: black;
+    background-color: rgba(0, 0, 0, .8);
     border: red solid 1px;
     border-radius: 5px;
     color: cornsilk;
     height: 130px;
     margin-top: 20px;
-    opacity: .8;
+}
+
+.column-header{
+    font-family: 'Yellowtail', cursive;
 }
 
 .devour{
     font-family: 'Yellowtail', cursive;
     font-size: 30px;
+}
+
+.horizontal-divider{
+    display: none;
 }
 
 body{
@@ -30,3 +37,12 @@ header{
     font-size: 120px;
     text-align: center;
 }
+
+@media screen and (max-width: 575px) {
+    header{
+        font-size: 100px;
+    }
+    .horizontal-divider{
+        display: block;
+    }
+  }
