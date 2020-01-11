@@ -1,28 +1,35 @@
 <div class="container">
     <div class="row">
-        <div class="col-6 offset-4">
+        <div class="mx-auto">
             <div class="form-inline">
                 <input id="burgerName" class="form-control" type="text" placeholder="Burger Name">
-                <button id="addBurger" type="submit" class="btn btn-success rounded-circle fa-2x fas fa-plus-circle"></button>
+                <button id="addBurger" type="submit"
+                    class="btn btn-success rounded-circle fa-2x fas fa-plus-circle"></button>
             </div>
         </div>
     </div>
 
     <hr>
 
-    <div class="row">
-        <div class="col-6">
+    <div class="row mt-4">
+        <div class="col-sm-6">
+            <h3 class="column-header text-center text-success">Let's eat some burgers!</h3>
             {{#each data}}
             {{#unless devoured}}
             <div class="burger-item p-2">
                 <p>Burger Name:</p>
                 <p>{{name}}</p>
-                <button type="button" class="btn btn-success rounded-circle px-5 py-0 mx-auto  devour" data-burger-id={{id}}>Devour!</button>
+                <button type="button" class="float-right btn btn-success rounded-circle px-5 py-0 mx-auto  devour"
+                    data-burger-id={{id}}>Devour!</button>
             </div>
             {{/unless}}
             {{/each}}
+
+            <hr class="horizontal-divider my-5">
         </div>
-        <div class="col-6">
+
+        <div class="col-sm-6">
+            <h3 class="column-header text-center text-success">Devoured, mmm!!</h3>
             {{#each data}}
             {{#if devoured}}
             <div class="burger-item p-2">
