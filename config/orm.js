@@ -41,4 +41,3 @@ orm = {
 };
 
 module.exports = orm;
-
