@@ -1,47 +1,36 @@
-const burger = require('../models/burger');
+const db = require('../models');
 const express = require('express');
 const router = express.Router();
 
 
 router.get('/api/burgers', (req, res) => {
-    burger.all((data) => {
-        return res.json(data);
+    db.Burger.findAll({}).then(function (burgers) {
+        return res.json(burgers);
     });
 });
 
 router.get('/', (req, res) => {
-    burger.all((data) => {
-
-        const devouredData = data.filter((item) => {
-            return item.devoured !== 0;
-        })
-
-        const undevouredData = data.filter((item) => {
-            return item.devoured === 0;
-        })
-
-        const dataFilterByDevoured = {
-            devoured: devouredData,
-            undevouredData: undevouredData
-        };
-
-        return res.render('index', { data });
-
-    })
+    db.Burger.findAll({
+    }).then(function (burgers) {
+        return res.render('index', { burgers });
+    });
 });
 
 router.post('/api/burger/create', (req, res) => {
-    const burgerName = req.body.name
-    burger.insert(burgerName, (data) => {
+    db.Burger.create({
+        name: req.body.name
+    }).then(function (data) {
         return res.send({ redirect: '/' });
     });
 });
 
 router.put('/api/burger/devour', (req, res) => {
-    const burgerId = req.body.id;
-    burger.devour(burgerId, () => {
-        return res.send({ redirect: '/' });
-    });
+    db.Burger.update(
+        { devoured: true },
+        {
+            where: { id: req.body.id }
+        });
+    return res.send({ redirect: '/' });
 });
 
 module.exports = router;
